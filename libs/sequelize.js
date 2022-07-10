@@ -13,15 +13,14 @@ const options = {
 };
 
 if (config.isProd) {
-  options.ssl = {
-    rejectUnauthorized: false,
+  options.dialectOptions = {
+    ssl: {
+      rejectUnauthorized: false,
+    },
   };
 }
 
-const sequelize = new Sequelize(config.isProd ? config.dbUrl : URI, {
-  // para cambiar de motor de bd
-  ...options,
-});
+const sequelize = new Sequelize(config.isProd ? config.dbUrl : URI, options);
 
 setupModels(sequelize);
 
