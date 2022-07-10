@@ -7,10 +7,20 @@ const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
 const URI = `${config.engineDB}://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
 
-const sequelize = new Sequelize(URI, {
-  // para cambiar de motor de bd
+const options = {
   dialect: config.engineDB,
-  logging: true,
+  logging: config.isProd ? false : true,
+};
+
+if (config.isProd) {
+  options.ssl = {
+    rejectUnauthorized: false,
+  };
+}
+
+const sequelize = new Sequelize(config.isProd ? config.dbUrl : URI, {
+  // para cambiar de motor de bd
+  ...options,
 });
 
 setupModels(sequelize);
