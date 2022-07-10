@@ -12,7 +12,7 @@ module.exports = {
   production: {
     url: config.dbUrl,
     dialect: config.engineDB,
-    ssl: {
+    dialectOptions: {
       rejectUnauthorized: false,
     },
   },
