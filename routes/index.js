@@ -5,7 +5,6 @@ const categoriesRouter = require('./categories.router');
 const usersRouter = require('./users.router');
 const customersRouter = require('./customers.router');
 const orderRouter = require('./orders.router');
-const customersRouter = require('./customers.router');
 const authRouter = require('./auth.router');
 const profileRouter = require('./profile.router');
 
