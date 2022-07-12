@@ -43,6 +43,8 @@ routerApi(app);
 app.use(logErrors);
 app.use(ormErrorHandler);
 app.use(boomErrorHandler);
+// app.use(queryErrorHandler);
+app.use(ormErrorHandler);
 app.use(errorHandler);
 
 app.listen(port, () => {

@@ -3,8 +3,14 @@ const bcrypt = require('bcrypt');
 
 const { models } = require('./../libs/sequelize');
 
+// const getConnection = require('../libs/postgres');
+// const pool = require('../libs/postgres.pool');
+const sequealize = require('../libs/sequelize');
 class UserService {
-  constructor() {}
+  constructor() {
+    // this.pool = pool;
+    // this.pool.on('error', (err) => console.log(err));
+  }
 
   async create(data) {
     const hash = await bcrypt.hash(data.password, 10);
